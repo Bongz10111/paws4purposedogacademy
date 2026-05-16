@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<title>Paws4Purpose | Dog Academy — Cart, EFT, Mobile Friendly</title>
+<title>Paws4Purpose | Dog Academy</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
@@ -34,6 +34,18 @@
     color: var(--black);
     line-height: 1.5;
     overflow-x: hidden;
+  }
+
+  /* ===== LOGO SIZE FIX ===== */
+  .logo-wrapper {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  .hero-logo {
+    max-width: 180px;
+    width: 100%;
+    height: auto;
+    display: block;
   }
 
   /* ===== SCROLL REVEAL ANIMATIONS ===== */
@@ -779,6 +791,10 @@
     .whatsapp-float i {
       font-size: 1.7rem;
     }
+    /* Smaller logo on mobile */
+    .hero-logo {
+      max-width: 120px;
+    }
   }
 </style>
 </head>
@@ -804,22 +820,26 @@
 
 <main>
   <section class="hero">
-    <div class="hero-grid">
-      <div class="reveal-left">
-        <h1>Helping Dogs & Owners Build Better Relationships</h1>
-        <p>Positive dog training in Gauteng for puppies, behaviour support, therapy dogs, and family companions.</p>
-        <a href="#programs" class="btn-cta">🐕 Explore Programs →</a>
-        <div class="hero-stats">
-          <span class="stat-badge">⭐ 4.9/5 · 500+ dogs</span>
-          <span class="stat-badge">🐾 Gauteng</span>
-          <span class="stat-badge">✨ Positive only</span>
-        </div>
+  <div class="hero-grid">
+    <div class="reveal-left">
+      <!-- Logo with proper sizing (fixed) -->
+      <div class="logo-wrapper">
+        
       </div>
-      <div class="hero-img reveal-right">
-        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1074&auto=format&fit=crop" alt="Golden retriever training">
+      <h1>Helping Dogs & Owners Build Better Relationships</h1>
+      <p>Positive dog training in Gauteng for puppies, behaviour support, therapy dogs, and family companions.</p>
+      <a href="#programs" class="btn-cta">🐕 Explore Programs →</a>
+      <div class="hero-stats">
+        <span class="stat-badge">⭐ 4.9/5 · 500+ dogs</span>
+        <span class="stat-badge">🐾 Gauteng</span>
+        <span class="stat-badge">✨ Positive only</span>
       </div>
     </div>
-  </section>
+    <div class="hero-img reveal-right">
+      <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1074&auto=format&fit=crop" alt="Golden retriever training">
+    </div>
+  </div>
+</section>
 
   <section class="section about-section">
     <div class="about-grid">
