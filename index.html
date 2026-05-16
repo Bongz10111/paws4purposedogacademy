@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Paws4Purpose | Dog Academy — Cart, EFT, Mobile Friendly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --royal-blue: #0056b3;
+    --golden-yellow: #ffcc00;
+    --black: #000000;
+    --white: #ffffff;
+    --off-white: #fafcff;
+    --gray-light: #f8fafc;
+    --border-light: #e9eef3;
+    --shadow-sm: 0 12px 30px rgba(0,0,0,0.05);
+    --shadow-md: 0 20px 35px -12px rgba(0,0,0,0.1);
+    --transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--off-white);
+    color: var(--black);
+    line-height: 1.5;
+    overflow-x: hidden;
+  }
+
+  /* ===== SCROLL REVEAL ANIMATIONS ===== */
+  .reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  }
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .reveal-left {
+    opacity: 0;
+    transform: translateX(-30px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  }
+  .reveal-left.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .reveal-right {
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  }
+  .reveal-right.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .reveal-scale {
+    opacity: 0;
+    transform: scale(0.96);
+    transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+  }
+  .reveal-scale.visible {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  /* ===== NAVBAR ===== */
+  .site-header {
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .nav-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0.9rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+  }
+  .logo .paws { color: var(--royal-blue); }
+  .logo .four { color: var(--black); }
+  .logo .purpose { color: var(--golden-yellow); font-style: italic; }
+
+  .nav-links {
+    display: flex;
+    gap: 1.5rem;
+    list-style: none;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a {
+    color: var(--black);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    transition: var(--transition);
+  }
+
+  .nav-links a:hover {
+    color: var(--royal-blue);
+  }
+
+  .cart-icon-wrapper {
+    cursor: pointer;
+    background: rgba(0,86,179,0.08);
+    padding: 8px 16px;
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    color: var(--black);
+  }
+
+  .cart-icon-wrapper:hover {
+    background: rgba(0,86,179,0.15);
+    transform: scale(1.02);
+  }
+
+  .cart-icon {
+    font-size: 1.25rem;
+    color: var(--royal-blue);
+  }
+
+  .cart-count {
+    background: var(--golden-yellow);
+    color: var(--black);
+    font-weight: 800;
+    font-size: 0.7rem;
+    min-width: 20px;
+    height: 20px;
+    border-radius: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 6px;
+  }
+
+  .btn-cta {
+    background: var(--golden-yellow);
+    color: var(--black);
+    font-weight: 700;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 60px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-cta:hover {
+    background: #e6b800;
+    transform: translateY(-2px);
+  }
+
+  .hero {
+    background: linear-gradient(105deg, #ffffff 0%, #f0f4fe 100%);
+    padding: 6rem 2rem 5rem;
+  }
+
+  .hero-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero h1 i {
+    color: var(--royal-blue);
+    font-style: italic;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-badge {
+    background: white;
+    border-radius: 60px;
+    padding: 8px 16px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+  }
+
+  .hero-img img {
+    border-radius: 32px;
+    width: 100%;
+    height: auto;
+    box-shadow: var(--shadow-md);
+  }
+
+  .section {
+    max-width: 1280px;
+    margin: 4rem auto;
+    padding: 0 2rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  .section-title span {
+    color: var(--royal-blue);
+    border-bottom: 3px solid var(--golden-yellow);
+    padding-bottom: 6px;
+  }
+
+  .programs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .program-card {
+    background: white;
+    border-radius: 32px;
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+    transition: var(--transition);
+    border: 1px solid var(--border-light);
+  }
+
+  .program-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .paw-icon {
+    color: var(--golden-yellow);
+    font-size: 2rem;
+  }
+
+  .program-card h3 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0;
+  }
+
+  .program-desc {
+    color: #4b5563;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  .program-price {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--royal-blue);
+    margin: 1rem 0;
+  }
+
+  .add-to-cart-btn {
+    background: var(--golden-yellow);
+    border: none;
+    padding: 12px;
+    border-radius: 60px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    font-family: inherit;
+    transition: var(--transition);
+  }
+
+  .add-to-cart-btn:hover {
+    background: #e6b800;
+  }
+
+  /* ===== ABOUT US SECTION STYLES ===== */
+  .about-section {
+    background: linear-gradient(135deg, #f0f4fe 0%, #ffffff 100%);
+    border-radius: 40px;
+    padding: 4rem 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .about-img img {
+    border-radius: 32px;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    box-shadow: var(--shadow-md);
+    display: block;
+  }
+
+  .about-label {
+    color: var(--royal-blue);
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+    display: block;
+  }
+
+  .about-content h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    color: var(--black);
+  }
+
+  .about-p {
+    color: #4b5563;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .about-badges {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .about-badge-card {
+    background: var(--white);
+    border: 1px solid var(--border-light);
+    border-radius: 24px;
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: var(--transition);
+  }
+
+  .about-badge-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    border-color: rgba(0, 86, 179, 0.2);
+  }
+
+  .about-badge-icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  .about-badge-text {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--black);
+    line-height: 1.3;
+  }
+
+  /* ===== AUTO SCROLL GALLERY CAROUSEL ===== */
+  .gallery-carousel-wrapper {
+    overflow: hidden;
+    width: 100%;
+    position: relative;
+    padding: 1.5rem 0;
+  }
+
+  .gallery-track {
+    display: flex;
+    gap: 1.5rem;
+    width: max-content;
+    animation: scrollCarousel 40s linear infinite;
+  }
+
+  .gallery-carousel-wrapper:hover .gallery-track {
+    animation-play-state: paused;
+  }
+
+  .gallery-img-box {
+    width: 280px;
+    height: 210px;
+    overflow: hidden;
+    border-radius: 24px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-light);
+    flex-shrink: 0;
+  }
+
+  .gallery-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+  }
+
+  .gallery-img-box:hover img {
+    transform: scale(1.15);
+  }
+
+  @keyframes scrollCarousel {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  .method-enquiry-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background: white;
+    border-radius: 40px;
+    padding: 2rem;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .method-box {
+    background: transparent;
+  }
+
+  .enquiry-box {
+    background: var(--gray-light);
+    border-radius: 32px;
+    padding: 1.8rem;
+    border: 1px solid var(--border-light);
+  }
+
+  .enquiry-box h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: var(--royal-blue);
+  }
+
+  .enquiry-form-compact input,
+  .enquiry-form-compact textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 40px;
+    border: 1px solid var(--border-light);
+    margin-bottom: 1rem;
+    font-family: inherit;
+  }
+
+  .enquiry-form-compact textarea {
+    border-radius: 24px;
+  }
+
+  .cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 200;
+    visibility: hidden;
+    opacity: 0;
+    transition: 0.25s;
+  }
+  .cart-overlay.open { visibility: visible; opacity: 1; }
+  .cart-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    max-width: 460px;
+    height: 100%;
+    background: white;
+    z-index: 201;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    border-left: 3px solid var(--royal-blue);
+    box-shadow: -5px 0 30px rgba(0,86,179,0.25);
+  }
+  .cart-drawer.open {
+    transform: translateX(0);
+    box-shadow: -8px 0 35px rgba(0,86,179,0.3);
+  }
+  .cart-header {
+    background: var(--royal-blue);
+    color: white;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+  .close-cart {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  .cart-items { flex: 1; overflow-y: auto; padding: 1rem; }
+  .cart-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-light);
+  }
+  .cart-summary {
+    padding: 1.2rem;
+    border-top: 2px solid var(--royal-blue);
+    background: var(--gray-light);
+  }
+  .cart-total {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--royal-blue);
+  }
+  .checkout-btn {
+    width: 100%;
+    background: var(--golden-yellow);
+    padding: 14px;
+    border-radius: 60px;
+    border: none;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .checkout-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    max-width: 550px;
+    width: 90%;
+    border-radius: 36px;
+    padding: 1.8rem;
+    z-index: 300;
+    display: none;
+    max-height: 90vh;
+    overflow-y: auto;
+    border: 2px solid var(--royal-blue);
+    box-shadow: 0 20px 40px rgba(0,86,179,0.3), 0 0 0 4px rgba(0,86,179,0.1);
+  }
+  .checkout-modal.open { display: block; }
+  .checkout-modal h3 {
+    font-size: 1.8rem;
+    color: var(--royal-blue);
+    margin-bottom: 0.5rem;
+  }
+  .form-group { margin-bottom: 1rem; }
+  .form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+  }
+  .form-group input, .form-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 40px;
+    border: 1px solid var(--border-light);
+    font-family: inherit;
+  }
+  .form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: var(--royal-blue);
+    box-shadow: 0 0 0 2px rgba(0,86,179,0.2);
+  }
+  .radio-group {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 5px;
+  }
+  .radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: normal;
+    cursor: pointer;
+  }
+  .eft-details-box {
+    background: #f0f4fe;
+    padding: 1rem;
+    border-radius: 20px;
+    margin-top: 1rem;
+    border-left: 4px solid var(--golden-yellow);
+  }
+  .pay-btn {
+    background: var(--royal-blue);
+    color: white;
+    width: 100%;
+    padding: 14px;
+    border-radius: 60px;
+    border: none;
+    font-weight: 700;
+    margin-top: 0.8rem;
+    cursor: pointer;
+  }
+  .pay-btn:hover {
+    background: #004099;
+  }
+  .btn-outline-blue {
+    background: transparent;
+    border: 1px solid #ccc;
+    padding: 12px;
+    border-radius: 60px;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 600;
+    margin-top: 0.6rem;
+  }
+
+  footer {
+    background: var(--black);
+    color: #b0c4de;
+    padding: 3rem 2rem 2rem;
+    margin-top: 4rem;
+  }
+  .footer-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+  .footer-col h4 {
+    color: var(--golden-yellow);
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+  }
+  .footer-col p, .footer-col a {
+    color: #b0c4de;
+    text-decoration: none;
+    font-size: 0.85rem;
+    line-height: 1.8;
+  }
+  .newsletter-input {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+  .newsletter-input input {
+    flex: 1;
+    padding: 12px;
+    border-radius: 60px;
+    border: none;
+  }
+  .newsletter-input button {
+    background: var(--golden-yellow);
+    border: none;
+    padding: 0 18px;
+    border-radius: 60px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  .social-icons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  .social-icons a {
+    background: rgba(255,255,255,0.1);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    color: white;
+    font-size: 1.2rem;
+  }
+  .social-icons a:hover {
+    background: var(--golden-yellow);
+    color: var(--black);
+  }
+  .copyright {
+    text-align: center;
+    padding-top: 2rem;
+    margin-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    font-size: 0.75rem;
+  }
+
+  /* ===== FLOATING WHATSAPP BUTTON ===== */
+  .whatsapp-float {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    width: 64px;
+    height: 64px;
+    background-color: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(37,211,102,0.4);
+    transition: all 0.3s ease;
+    text-decoration: none;
+    border: none;
+  }
+  .whatsapp-float:hover {
+    transform: scale(1.08);
+    box-shadow: 0 10px 28px rgba(37,211,102,0.5);
+  }
+  .whatsapp-float i {
+    font-size: 2rem;
+    color: white;
+  }
+  @keyframes pulse-wa {
+    0% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+    70% { box-shadow: 0 0 0 12px rgba(37,211,102,0); }
+    100% { box-shadow: 0 0 0 0 rgba(37,211,102,0); }
+  }
+  .whatsapp-float {
+    animation: pulse-wa 2s infinite;
+  }
+
+  @media (max-width: 768px) {
+    .nav-container { flex-direction: column; text-align: center; }
+    .nav-links { justify-content: center; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .about-badges { grid-template-columns: 1fr; gap: 1rem; }
+    .method-enquiry-grid { grid-template-columns: 1fr; }
+    .section { padding: 0 1rem; }
+    .hero { padding: 5rem 1rem 3rem; }
+    .program-card { padding: 1.5rem; }
+    .whatsapp-float {
+      width: 54px;
+      height: 54px;
+      bottom: 20px;
+      right: 20px;
+    }
+    .whatsapp-float i {
+      font-size: 1.7rem;
+    }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="nav-container">
+    <a href="#" class="logo">
+      <span class="paws">PAWS</span><span class="four">4</span><span class="purpose">PURPOSE</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#programs">Programs</a></li>
+      <li><a href="#gallery">Gallery</a></li>
+      <li><a href="#approach">Method</a></li>
+      <li><a href="#enquiry">Enquiry</a></li>
+    </ul>
+    <div class="cart-icon-wrapper" id="cartIconBtn">
+      <span class="cart-icon">📝</span>
+      <span class="cart-count" id="cartCount">0</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="reveal-left">
+        <h1>Helping Dogs & Owners Build Better Relationships</h1>
+        <p>Positive dog training in Cape Town for puppies, behaviour support, therapy dogs, and family companions.</p>
+        <a href="#programs" class="btn-cta">🐕 Explore Programs →</a>
+        <div class="hero-stats">
+          <span class="stat-badge">⭐ 4.9/5 · 500+ dogs</span>
+          <span class="stat-badge">🐾 Cape Town</span>
+          <span class="stat-badge">✨ Positive only</span>
+        </div>
+      </div>
+      <div class="hero-img reveal-right">
+        <img src="https://images.unsplash.com/photo-1543466835-00a7907e9de1?q=80&w=1074&auto=format&fit=crop" alt="Golden retriever training">
+      </div>
+    </div>
+  </section>
+
+  <section class="section about-section">
+    <div class="about-grid">
+      <div class="about-img reveal-left">
+        <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee?q=80&w=600&auto=format&fit=crop" alt="Dog trainer supporting a dog happily outdoors">
+      </div>
+      <div class="about-content reveal-right">
+        <span class="about-label">ABOUT PAWS4PURPOSE</span>
+        <h2>Helping dogs and owners grow together through positive, relationship-based training.</h2>
+        <p class="about-p">
+          At Paws4Purpose, we believe that real training is built on understanding, not force. Whether you are welcoming a brand new puppy into your family, guiding a future therapy dog, or looking for patient support with complex behavioural challenges, we are here to help. Using gentle positive reinforcement methods, we focus on the bond between you and your dog, helping you overcome frustrations and create a calmer, happier relationship that lasts a lifetime.
+        </p>
+        <div class="about-badges">
+          <div class="about-badge-card">
+            <span class="about-badge-icon">🐾</span>
+            <span class="about-badge-text">500+ Dogs Supported</span>
+          </div>
+          <div class="about-badge-card">
+            <span class="about-badge-icon">❤️</span>
+            <span class="about-badge-text">Positive Reinforcement</span>
+          </div>
+          <div class="about-badge-card">
+            <span class="about-badge-icon">🎓</span>
+            <span class="about-badge-text">Therapy & Service Dog Guidance</span>
+          </div>
+          <div class="about-badge-card">
+            <span class="about-badge-icon">📍</span>
+            <span class="about-badge-text">Cape Town Based</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="programs" class="section">
+    <h2 class="section-title reveal">Choose your <span>training journey</span></h2>
+    <div class="programs-grid" id="programsGrid"></div>
+  </section>
+
+  <section id="gallery" class="section">
+    <h2 class="section-title reveal">Academy <span>Life Gallery</span></h2>
+    <div class="gallery-carousel-wrapper reveal-scale">
+      <div class="gallery-track">
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=500&auto=format&fit=crop" alt="Puppy training socialization"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?q=80&w=500&auto=format&fit=crop" alt="Dog catching treat agility"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?q=80&w=500&auto=format&fit=crop" alt="Dog trainer shaking paw"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=500&auto=format&fit=crop" alt="Happy dog sitting outdoor"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?q=80&w=500&auto=format&fit=crop" alt="Cute pup learning cues"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?q=80&w=500&auto=format&fit=crop" alt="Active running dog setup"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=500&auto=format&fit=crop" alt="Two dogs socializing together"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?q=80&w=500&auto=format&fit=crop" alt="Small puppy session"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?q=80&w=500&auto=format&fit=crop" alt="Border collie obedience focus"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?q=80&w=500&auto=format&fit=crop" alt="Dog look with trainer glasses"></div>
+
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=500&auto=format&fit=crop" alt="Puppy training socialization"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1534361960057-19889db9621e?q=80&w=500&auto=format&fit=crop" alt="Dog catching treat agility"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?q=80&w=500&auto=format&fit=crop" alt="Dog trainer shaking paw"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1516734212186-a967f81ad0d7?q=80&w=500&auto=format&fit=crop" alt="Happy dog sitting outdoor"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?q=80&w=500&auto=format&fit=crop" alt="Cute pup learning cues"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?q=80&w=500&auto=format&fit=crop" alt="Active running dog setup"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=500&auto=format&fit=crop" alt="Two dogs socializing together"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1507146426996-ef05306b995a?q=80&w=500&auto=format&fit=crop" alt="Small puppy session"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?q=80&w=500&auto=format&fit=crop" alt="Border collie obedience focus"></div>
+        <div class="gallery-img-box"><img src="https://images.unsplash.com/photo-1535930891776-0c2dfb7fda1a?q=80&w=500&auto=format&fit=crop" alt="Dog look with trainer glasses"></div>
+      </div>
+    </div>
+  </section>
+
+  <div id="approach" class="section">
+    <div class="method-enquiry-grid">
+      <div class="method-box reveal-left">
+        <div style="color: var(--golden-yellow); font-size: 2rem;">🐕✨</div>
+        <h3 style="font-size: 1.8rem; font-weight: 800; margin: 1rem 0;">The Paws4Purpose Method</h3>
+        <p>Combining gentle, positive dog training methods, emotional intelligence, and relationship-based training to transform reactivity into resilience.</p>
+        <div style="display: flex; gap: 12px; margin-top: 1.5rem; flex-wrap: wrap;">
+          <span style="background: #eef2ff; color: var(--royal-blue); padding: 6px 16px; border-radius: 40px;">🎯 Custom plans</span>
+          <span style="background: #eef2ff; color: var(--royal-blue); padding: 6px 16px; border-radius: 40px;">❤️ Lifetime community</span>
+        </div>
+      </div>
+      <div class="enquiry-box reveal-right" id="enquiry">
+        <h3>📋 Send us an enquiry</h3>
+        <form class="enquiry-form-compact" id="enquiryFormInline">
+          <input type="text" placeholder="Your name" id="enqNameInline" required>
+          <input type="email" placeholder="Email address" id="enqEmailInline" required>
+          <input type="tel" placeholder="WhatsApp number" id="enqPhoneInline">
+          <input type="text" placeholder="Dog's name & breed" id="enqDogInline">
+          <textarea rows="3" placeholder="Tell us about your dog's behaviour or questions..." id="enqMessageInline"></textarea>
+          <button type="button" class="btn-cta" onclick="submitInlineEnquiry()" style="width:100%; justify-content:center;">📩 Send Enquiry</button>
+        </form>
+        <p id="enquirySuccessInline" style="display:none; color: green; text-align:center; margin-top:0.8rem;">✓ Thanks! We'll reply within 24h.</p>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-col reveal">
+      <h4>Paws4Purpose</h4>
+      <p>Helping dogs and owners with gentle training methods, positive reinforcement, and personalised support.</p>
+      <a 
+  href="https://www.facebook.com/share/1BNWMNNwgs/" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  <i class="fab fa-facebook-f"></i>
+</a>
+    </div>
+    <div class="footer-col reveal">
+      <h4>Quick Links</h4>
+      <p><a href="#programs">Programs</a></p>
+      <p><a href="#gallery">Gallery</a></p>
+      <p><a href="#approach">Method</a></p>
+      <p><a href="#enquiry">Enquiry</a></p>
+    </div>
+    <div class="footer-col reveal">
+      <h4>Newsletter</h4>
+      <p>Get training tips & updates</p>
+      <div class="newsletter-input">
+        <input type="email" id="newsletterEmail" placeholder="Your email">
+        <button onclick="subscribeNewsletter()">Join</button>
+      </div>
+    </div>
+    <div class="footer-col reveal">
+      <h4>Contact</h4>
+      <p>📍 Gauteng, South Africa</p>
+      <p>📞 +27 00 000 0000</p>
+      <p>✉ hello@paws4purpose.co.za</p>
+    </div>
+  </div>
+  <div class="copyright">© 2026 Paws4Purpose Dog Academy. All rights reserved. 🐾</div>
+</footer>
+
+<a href="https://wa.me/27720000000?text=Hi%20Paws4Purpose%21%20I%27d%20like%20to%20book%20a%20training%20session%20for%20my%20dog." 
+   class="whatsapp-float" 
+   target="_blank" 
+   rel="noopener noreferrer"
+   aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header"><h2>🐾 Selected Training Programs</h2><button class="close-cart" id="closeCartBtn">✕</button></div>
+  <div class="cart-items" id="cartItemsList"><div style="text-align:center; padding:2rem;">No courses added yet</div></div>
+  <div class="cart-summary" id="cartSummary" style="display:none;">
+    <div class="cart-total"><span>Total Contribution:</span><span id="cartTotalAmount">R0</span></div>
+    <button class="checkout-btn" id="proceedCheckoutBtn">Continue Booking →</button>
+  </div>
+</div>
+
+<div class="checkout-modal" id="checkoutModal">
+  <h3>🐕 Complete Your Plan</h3>
+  <div class="form-group"><label>Full name *</label><input type="text" id="checkoutName" placeholder="John Doe"></div>
+  <div class="form-group"><label>Dog's name & breed *</label><input type="text" id="checkoutDog" placeholder="Max - Golden Retriever"></div>
+  <div class="form-group"><label>Selected path</label><input type="text" id="checkoutService" readonly style="background:#f5f5f5;" placeholder="Will auto-fill from selections"></div>
+  <div class="form-group"><label>Preferred date *</label><input type="date" id="checkoutDate"></div>
+  <div class="form-group"><label>Preferred time *</label><input type="time" id="checkoutTime"></div>
+  <div class="form-group"><label>Phone number (WhatsApp) *</label><input type="tel" id="checkoutPhone" placeholder="+27 00 000 0000"></div>
+  <div class="form-group"><label>Email address *</label><input type="email" id="checkoutEmail" placeholder="hello@example.com"></div>
+  <div class="form-group"><label>Send updates via:</label>
+    <div class="radio-group">
+      <label><input type="radio" name="confirmationMethod" value="whatsapp" checked> 📱 WhatsApp</label>
+      <label><input type="radio" name="confirmationMethod" value="email"> ✉️ Email</label>
+      <label><input type="radio" name="confirmationMethod" value="both"> 📱+✉️ Both</label>
+    </div>
+  </div>
+  <div class="form-group"><label>Preferred Setup</label>
+    <select id="paymentMethod">
+      <option value="whatsapp">💬 WhatsApp Confirmation (Complete Later)</option>
+      <option value="eft">🏦 Direct Bank Transfer (EFT)</option>
+    </select>
+  </div>
+  <div id="eftDetails" class="eft-details-box" style="display:none;">
+    <p><strong>🏦 Academy Bank Account Info:</strong></p>
+    <p>Bank: FNB<br>Account: Paws4Purpose<br>Acc No: 628 309 54 123<br>Ref: YOUR_NAME_DOG</p>
+    <small>📎 Kindly share proof via WhatsApp after completing transfer.</small>
+  </div>
+  <button class="pay-btn" id="confirmOrderBtn">Send Booking Request</button>
+  <button class="btn-outline-blue" id="closeCheckoutBtn">Go Back</button>
+</div>
+
+<script>
+  const programsData = [
+    { id: 1, name: "Puppy Foundations", description: "6-week group programme for pups under 6 months.", price: 450, icon: "🐶" },
+    { id: 2, name: "Behaviour Support Program", description: "Advanced 8-week course for reactivity & anxiety.", price: 750, icon: "🧠" },
+    { id: 3, name: "Private One-on-One Training", description: "1-on-1 in-home sessions, fully bespoke plan.", price: 950, icon: "⭐" }
+  ];
+  let cart = [];
+
+  const programsGrid = document.getElementById('programsGrid');
+  const cartCountSpan = document.getElementById('cartCount');
+  const cartItemsContainer = document.getElementById('cartItemsList');
+  const cartSummaryDiv = document.getElementById('cartSummary');
+  const cartTotalSpan = document.getElementById('cartTotalAmount');
+  const cartOverlay = document.getElementById('cartOverlay');
+  const cartDrawer = document.getElementById('cartDrawer');
+  const cartIconBtn = document.getElementById('cartIconBtn');
+  const closeCartBtn = document.getElementById('closeCartBtn');
+  const proceedCheckoutBtn = document.getElementById('proceedCheckoutBtn');
+  const checkoutModal = document.getElementById('checkoutModal');
+  const confirmOrderBtn = document.getElementById('confirmOrderBtn');
+  const closeCheckoutBtnModal = document.getElementById('closeCheckoutBtn');
+
+  function saveCart() { localStorage.setItem('paws_cart', JSON.stringify(cart)); }
+  function loadCart() {
+    const stored = localStorage.getItem('paws_cart');
+    if (stored) { try { cart = JSON.parse(stored); } catch(e) { cart = []; } } else { cart = []; }
+    renderCartUI(); updateCartCount();
+  }
+  function updateCartCount() { cartCountSpan.innerText = cart.reduce((s,i)=> s + i.quantity, 0); }
+  function addToCart(program) {
+    const existing = cart.find(i => i.id === program.id);
+    if (existing) existing.quantity += 1;
+    else cart.push({ ...program, quantity: 1 });
+    saveCart(); renderCartUI(); updateCartCount();
+  }
+  function removeItem(id) { cart = cart.filter(i => i.id !== id); saveCart(); renderCartUI(); updateCartCount(); }
+  function updateQuantity(id, delta) {
+    const item = cart.find(i => i.id === id);
+    if (item) {
+      const newQty = item.quantity + delta;
+      if (newQty <= 0) removeItem(id);
+      else { item.quantity = newQty; saveCart(); renderCartUI(); updateCartCount(); }
+    }
+  }
+  function renderCartUI() {
+    if (cart.length === 0) {
+      cartItemsContainer.innerHTML = '<div style="text-align:center; padding:2rem;">🐕 No programs currently selected.</div>';
+      cartSummaryDiv.style.display = 'none';
+      return;
+    }
+    cartSummaryDiv.style.display = 'block';
+    let itemsHtml = '', total = 0;
+    cart.forEach(item => {
+      total += item.price * item.quantity;
+      itemsHtml += `<div class="cart-item"><div><h4>${item.name} ${item.icon}</h4><small>R${item.price} per setup</small><div style="display:flex; gap:8px; margin-top:6px;"><button class="qty-btn" data-id="${item.id}" data-delta="-1">−</button><span>${item.quantity}</span><button class="qty-btn" data-id="${item.id}" data-delta="1">+</button><button class="remove-btn" data-id="${item.id}">Remove</button></div></div><div class="cart-item-price">R${item.price * item.quantity}</div></div>`;
+    });
+    cartItemsContainer.innerHTML = itemsHtml;
+    cartTotalSpan.innerText = `R${total}`;
+    document.querySelectorAll('.qty-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => { const id = parseInt(btn.dataset.id), delta = parseInt(btn.dataset.delta); updateQuantity(id, delta); });
+    });
+    document.querySelectorAll('.remove-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => { removeItem(parseInt(btn.dataset.id)); });
+    });
+  }
+  function openCartDrawer() { cartOverlay.classList.add('open'); cartDrawer.classList.add('open'); }
+  function closeCartDrawer() { cartOverlay.classList.remove('open'); cartDrawer.classList.remove('open'); }
+
+  function renderPrograms() {
+    programsGrid.innerHTML = programsData.map((prog, index) => `
+      <div class="program-card reveal-scale" style="transition-delay: ${index * 0.1}s">
+        <div class="paw-icon">${prog.icon} 🐾</div>
+        <h3>${prog.name}</h3>
+        <p class="program-desc">${prog.description}</p>
+        <div class="program-price">R${prog.price}<small>/session</small></div>
+        <button class="add-to-cart-btn" data-id="${prog.id}">✨ Select Program · R${prog.price}</button>
+      </div>
+    `).join('');
+    document.querySelectorAll('.add-to-cart-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => { const id = parseInt(btn.dataset.id); addToCart(programsData.find(p => p.id === id)); });
+    });
+    observeRevealElements();
+  }
+
+  let checkoutTotalCache = 0;
+  function openCheckoutModalHandler() {
+    if (cart.length === 0) { alert("No programs selected."); return; }
+    checkoutTotalCache = cart.reduce((s,i)=> s + (i.price * i.quantity), 0);
+    const serviceNames = cart.map(i => `${i.name} (x${i.quantity})`).join(', ');
+    document.getElementById('checkoutService').value = serviceNames;
+    checkoutModal.classList.add('open');
+    const select = document.getElementById('paymentMethod');
+    const eftDiv = document.getElementById('eftDetails');
+    if (select && eftDiv) eftDiv.style.display = select.value === 'eft' ? 'block' : 'none';
+  }
+  function closeCheckoutModalHandler() { checkoutModal.classList.remove('open'); }
+  function completeCheckout() {
+    const name = document.getElementById('checkoutName').value.trim();
+    const dog = document.getElementById('checkoutDog').value.trim();
+    const date = document.getElementById('checkoutDate').value;
+    const time = document.getElementById('checkoutTime').value;
+    const phone = document.getElementById('checkoutPhone').value.trim();
+    const email = document.getElementById('checkoutEmail').value.trim();
+    const confirmationMethod = document.querySelector('input[name="confirmationMethod"]:checked')?.value;
+    const paymentMethod = document.getElementById('paymentMethod').value;
+    if (!name || !dog || !date || !time || !phone || !email) {
+      alert("Please fill all required fields: name, dog, date, time, phone and email.");
+      return;
+    }
+    if (cart.length === 0) { alert("Selections empty."); return; }
+    let confirmationMsg = "";
+    if (confirmationMethod === 'whatsapp') confirmationMsg = `📱 Connection will be established via ${phone} on WhatsApp.`;
+    else if (confirmationMethod === 'email') confirmationMsg = `✉️ Details will be shared with ${email}.`;
+    else confirmationMsg = `📱+✉️ Details will be sent to both ${phone} and ${email}.`;
+    if (paymentMethod === 'eft') {
+      alert(`✅ Request Sent, ${name}!\n\n🐕 Dog: ${dog}\n📅 Preferred schedule: ${date} at ${time}\n💰 Estimated Allocation: R${checkoutTotalCache}\n${confirmationMsg}\n\n🏦 Direct Bank Transfer Information:\nBank: FNB\nAcc: 62830954123\nRef: ${name.replace(/ /g, '_')}_DOG\n\nKindly share verification via WhatsApp after completing transfer.`);
+    } else {
+      alert(`✅ Thank you ${name}!\n\n🐕 Dog: ${dog}\n📅 Preferred schedule: ${date} at ${time}\n💰 Total: R${checkoutTotalCache}\n${confirmationMsg}\n\nWe will reach out to guide you through details shortly.`);
+    }
+    cart = [];
+    saveCart();
+    renderCartUI();
+    updateCartCount();
+    closeCheckoutModalHandler();
+    closeCartDrawer();
+    document.getElementById('checkoutName').value = '';
+    document.getElementById('checkoutDog').value = '';
+    document.getElementById('checkoutDate').value = '';
+    document.getElementById('checkoutTime').value = '';
+    document.getElementById('checkoutPhone').value = '';
+    document.getElementById('checkoutEmail').value = '';
+  }
+  document.getElementById('paymentMethod')?.addEventListener('change', function() {
+    const eftDiv = document.getElementById('eftDetails');
+    if (eftDiv) eftDiv.style.display = this.value === 'eft' ? 'block' : 'none';
+  });
+  cartIconBtn.addEventListener('click', openCartDrawer);
+  closeCartBtn.addEventListener('click', closeCartDrawer);
+  cartOverlay.addEventListener('click', closeCartDrawer);
+  proceedCheckoutBtn.addEventListener('click', () => { closeCartDrawer(); openCheckoutModalHandler(); });
+  confirmOrderBtn.addEventListener('click', completeCheckout);
+  closeCheckoutBtnModal.addEventListener('click', closeCheckoutModalHandler);
+  window.submitInlineEnquiry = function() {
+    const name = document.getElementById('enqNameInline').value.trim();
+    const email = document.getElementById('enqEmailInline').value.trim();
+    if (!name || !email) { alert("Please enter your name and email."); return; }
+    document.getElementById('enquirySuccessInline').style.display = 'block';
+    document.getElementById('enquiryFormInline').reset();
+    setTimeout(() => { document.getElementById('enquirySuccessInline').style.display = 'none'; }, 3000);
+  };
+  window.subscribeNewsletter = function() {
+    const email = document.getElementById('newsletterEmail').value.trim();
+    if (!email) { alert("Enter email address."); return; }
+    alert(`📧 Thanks! ${email} added for tips and insights.`);
+    document.getElementById('newsletterEmail').value = '';
+  };
+
+  function observeRevealElements() {
+    const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
+    revealElements.forEach(el => observer.observe(el));
+  }
+  
+  renderPrograms();
+  loadCart();
+  observeRevealElements();
+</script>
+</body>
+</html>
